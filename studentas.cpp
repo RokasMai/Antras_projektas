@@ -68,12 +68,6 @@ double Studentas::skaiciuotiGalutiniBala(const std::string& tipas) const {
     }
 }
 
-std::ostream& operator<<(std::ostream& out, const Studentas& stud) {
-    out << std::left << std::setw(20) << stud.getVardas() << std::setw(20) << stud.getPavarde()
-        << std::fixed << std::setprecision(2) << stud.skaiciuotiGalutiniBala("Vid");
-    return out;
-}
-
 void ivestiDuomenisRanka(std::vector<Studentas>& studentai) {
     int studentuSkaicius;
     std::cout << "Iveskite studentu skaiciu: ";
