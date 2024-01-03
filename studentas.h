@@ -4,7 +4,18 @@
 #include <string>
 #include <vector>
 
-class Studentas {
+class Zmogus {
+protected:
+    std::string vardas, pavarde;
+
+    Zmogus(std::string vardas = "", std::string pavarde = "")
+        : vardas(vardas), pavarde(pavarde) {}
+
+public:
+    virtual std::string getVardas() const = 0;
+    virtual std::string getPavarde() const = 0;
+};
+class Studentas: public Zmogus {
 private:
     std::string vardas;
     std::string pavarde;
@@ -14,9 +25,9 @@ private:
 public:
     // Konstruktorius
     Studentas(std::string v, std::string p, std::vector<int> tr, int er)
-        : vardas(v), pavarde(p), tarpiniai_rezultatai(tr), egzamino_rezultatas(er) {}
+        : Zmogus(v, p), tarpiniai_rezultatai(tr), egzamino_rezultatas(er) {}
     ~Studentas(){tarpiniai_rezultatai.clear();}
-    Studentas(const Studentas& s):vardas(s.vardas),pavarde(s.pavarde), tarpiniai_rezultatai(s.tarpiniai_rezultatai), egzamino_rezultatas(s.egzamino_rezultatas){}
+    Studentas(const Studentas& s):Zmogus(s.vardas, s.pavarde), tarpiniai_rezultatai(s.tarpiniai_rezultatai), egzamino_rezultatas(s.egzamino_rezultatas){}
     Studentas& operator=(const Studentas& s) {
         if (&s == this) return *this;
 
